@@ -4,9 +4,12 @@
 \PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
 %
 \documentclass[
-]{agujournal2019}
+  11pt,
+  a4paper,
+]{article}
 
 \usepackage{amsmath,amssymb}
+\usepackage{setspace}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
@@ -20,6 +23,7 @@
 \usepackage{lmodern}
 \ifPDFTeX\else  
     % xetex/luatex font selection
+  \setmainfont[]{Palatino Linotype}
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -38,31 +42,9 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
+\usepackage[top=2.4cm,bottom=2.4cm,left=2.5cm,right=2.5cm]{geometry}
 \setlength{\emergencystretch}{3em} % prevent overfull lines
-\setcounter{secnumdepth}{5}
-% Make \paragraph and \subparagraph free-standing
-\makeatletter
-\ifx\paragraph\undefined\else
-  \let\oldparagraph\paragraph
-  \renewcommand{\paragraph}{
-    \@ifstar
-      \xxxParagraphStar
-      \xxxParagraphNoStar
-  }
-  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
-  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
-\fi
-\ifx\subparagraph\undefined\else
-  \let\oldsubparagraph\subparagraph
-  \renewcommand{\subparagraph}{
-    \@ifstar
-      \xxxSubParagraphStar
-      \xxxSubParagraphNoStar
-  }
-  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
-  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
-\fi
-\makeatother
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 
 
 \providecommand{\tightlist}{%
@@ -123,11 +105,6 @@
 \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
-\usepackage{url} %this package should fix any errors with URLs in refs.
-\usepackage{lineno}
-\usepackage[inline]{trackchanges} %for better track changes. finalnew option will compile document with changes incorporated.
-\usepackage{soul}
-\linenumbers
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%
@@ -177,9 +154,10 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
-  pdftitle={La Palma Earthquakes},
-  pdfauthor={Steve Purves; Rowan Cockett},
-  pdfkeywords={La Palma, Earthquakes},
+  pdftitle={Psychological Empowerment and Turnover: A Review of the Literature},
+  pdfauthor={Isaiah Espinoza},
+  pdfkeywords={Psychological Empowerment, Turnover, Election
+resiliency, Poll workers, Election administration},
   colorlinks=true,
   linkcolor={blue},
   filecolor={Maroon},
@@ -187,161 +165,1691 @@
   urlcolor={Blue},
   pdfcreator={LaTeX via pandoc}}
 
-\journalname{Earth and Space Science}
+%% CAPTIONS
+\usepackage{caption}
+\DeclareCaptionStyle{italic}[justification=centering]
+ {labelfont={bf},textfont={it},labelsep=colon}
+\captionsetup[figure]{style=italic,format=hang,singlelinecheck=true}
+\captionsetup[table]{style=italic,format=hang,singlelinecheck=true}
 
-\draftfalse
+%% FONT
+% \usepackage{bera}
+% \usepackage[charter]{mathdesign}
+% \usepackage[scale=0.9]{sourcecodepro}
+% \usepackage[lf,t]{FiraSans}
+\usepackage{fontawesome}
 
-\begin{document}
-\title{La Palma Earthquakes}
+%% HEADERS AND FOOTERS
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rfoot{\Large\sffamily\raisebox{-0.1cm}{\textbf{\thepage}}}
+\makeatletter
+\lhead{\textsf{\expandafter{\@title}}}
+\makeatother
+\rhead{}
+\cfoot{}
+\setlength{\headheight}{15pt}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\fancypagestyle{plain}{%
+\fancyhf{} % clear all header and footer fields
+\fancyfoot[C]{\sffamily\thepage} % except the center
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}}
 
-\authors{Steve Purves\affil{1}, Rowan Cockett\affil{1}}
-\affiliation{1}{Curvenote, }
-\correspondingauthor{Steve Purves}{steve@curvenote.com}
+%% MATHS
+\usepackage{bm,amsmath}
+\allowdisplaybreaks
+
+%% GRAPHICS
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setcounter{topnumber}{2}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{4}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\floatpagefraction}{0.8}
+
+%% SECTION TITLES
+\usepackage[compact,sf,bf]{titlesec}
+\titleformat*{\section}{\Large\sf\bfseries\color[rgb]{0.7,0,0}}
+\titleformat*{\subsection}{\large\sf\bfseries\color[rgb]{0.7,0,0}}
+\titleformat*{\subsubsection}{\sf\bfseries\color[rgb]{0.7,0,0}}
+\titlespacing{\section}{0pt}{2ex}{.5ex}
+\titlespacing{\subsection}{0pt}{1.5ex}{0ex}
+\titlespacing{\subsubsection}{0pt}{.5ex}{0ex}
 
 
-\begin{abstract}
-In September 2021, a significant jump in seismic activity on the island
-of La Palma (Canary Islands, Spain) signaled the start of a volcanic
-crisis that still continues at the time of writing. Earthquake data is
-continually collected and published by the Instituto Geográphico
-Nacional (IGN). \ldots{}
-\end{abstract}
+%% BIBLIOGRAPHY.
 
-\section*{Plain Language Summary}
-Earthquake data for the island of La Palma from the September 2021
-eruption is found \ldots{}
+\makeatletter
+\@ifpackageloaded{biblatex}{
+\ExecuteBibliographyOptions{bibencoding=utf8,minnames=1,maxnames=3, maxbibnames=99,dashed=false,terseinits=true,giveninits=true,uniquename=false,uniquelist=false,doi=false, isbn=false,url=true,sortcites=false}
+\DeclareFieldFormat{url}{\texttt{\url{#1}}}
+\DeclareFieldFormat[article]{pages}{#1}
+\DeclareFieldFormat[inproceedings]{pages}{\lowercase{pp.}#1}
+\DeclareFieldFormat[incollection]{pages}{\lowercase{pp.}#1}
+\DeclareFieldFormat[article]{volume}{\mkbibbold{#1}}
+\DeclareFieldFormat[article]{number}{\mkbibparens{#1}}
+\DeclareFieldFormat[article]{title}{\MakeCapital{#1}}
+\DeclareFieldFormat[article]{url}{}
+\DeclareFieldFormat[inproceedings]{title}{#1}
+\DeclareFieldFormat{shorthandwidth}{#1}
+\usepackage{xpatch}
+\xpatchbibmacro{volume+number+eid}{\setunit*{\adddot}}{}{}{}
+% Remove In: for an article.
+\renewbibmacro{in:}{%
+  \ifentrytype{article}{}{%
+  \printtext{\bibstring{in}\intitlepunct}}}
+\AtEveryBibitem{\clearfield{month}}
+\AtEveryCitekey{\clearfield{month}}
+\DeclareDelimFormat[cbx@textcite]{nameyeardelim}{\addspace}
+\renewcommand*{\finalnamedelim}{\addspace\&\space}
+}{}
+\makeatother
 
+%% PAGE BREAKING to avoid widows and orphans
+\clubpenalty = 2000
+\widowpenalty = 2000
+\usepackage{microtype}% Placement of logos
 
+\RequirePackage[absolute,overlay]{textpos}
+\setlength{\TPHorizModule}{1cm}
+\setlength{\TPVertModule}{1cm}
+\def\placefig#1#2#3#4{\begin{textblock}{.1}(#1,#2)\rlap{\includegraphics[#3]{#4}}\end{textblock}}
 
-\section{Introduction}\label{introduction}
+% Title and date
 
-\textsubscript{Source:
-\href{https://isaiahespi.github.io/cdce_empowerment/index.qmd.html}{Article
-Notebook}}
+\title{Psychological Empowerment and Turnover: A Review of the
+Literature}
+\date{April 22, 2024}
 
-\phantomsection\label{cell-fig-timeline}
-\begin{figure}[H]
+\def\Date{\number\day}
+\def\Month{\ifcase\month\or
+ January\or February\or March\or April\or May\or June\or
+ July\or August\or September\or October\or November\or December\fi}
+\def\Year{\number\year}
 
-\centering{
+%%%% PAGE STYLE FOR FRONT PAGE OF REPORTS
 
-\includegraphics{index_files/figure-pdf/fig-timeline-1.pdf}
+\makeatletter
+\def\organization#1{\gdef\@organization{#1}}
+\def\telephone#1{\gdef\@telephone{#1}}
+\def\email#1{\gdef\@email{#1}}
+\makeatother
+  \organization{}
 
+  \def\name{Center for Democracy and Civic Engagement}
+% 
+  \telephone{(410) 903 6911}
+% 
+  \email{ssnovey@umd.edu}
+
+\def\webaddress{\url{https://cdce.umd.edu/}}
+\def\abn{12 377 614 012}
+\def\extraspace{\vspace*{1.6cm}}
+\makeatletter
+\def\contactdetails{\faicon{phone} & \@telephone \\
+                    \faicon{envelope} & \@email}
+\makeatother
+
+\usepackage[absolute,overlay]{textpos}
+\setlength{\TPHorizModule}{1cm}
+\setlength{\TPVertModule}{1cm}
+
+%%%% FRONT PAGE OF REPORTS
+
+% \def\reporttype{Report}
+
+\long\def\front#1#2#3{
+\newpage
+% \begin{textblock}{7}(12.7,28.2)\hfill
+% \includegraphics[height=4cm]{umd_logo2}~~~
+% \end{textblock}
+\begin{singlespacing}
+\thispagestyle{empty}
+\vspace*{-1.4cm}
+\hspace*{-1.4cm}
+\hbox to 16cm{
+  \hbox to 6.5cm{\vbox to 14cm{\vbox to 25cm{
+    \includegraphics[width=6.6cm]{CDCE}
+    \vfill
+    \includegraphics[width=5cm]{umd_logo2}
+    \vspace{0.4cm}
+    \par
+    \parbox{6.3cm}{\raggedright
+      \sf\color[rgb]{0.70,0.00,0.00}
+      {\large\textbf{\name}}\par
+      \vspace{.7cm}
+      \tabcolsep=0.12cm\sf\small
+      \begin{tabular}{@{}ll@{}}\contactdetails
+      \end{tabular}
+    }
+  }\vss}\hss}
+  \hspace*{0.2cm}
+  \hbox to 1cm{\vbox to 14cm{\rule{1pt}{26.8cm}\vss}\hss\hfill}
+  \hbox to 10cm{\vbox to 14cm{\vbox to 25cm{
+      \vspace*{3cm}\sf\raggedright
+      \parbox{10cm}{\sf\raggedright\baselineskip=1.2cm
+         \fontsize{24.88}{30}\color[rgb]{0.70,0.00,0.00}\sf\textbf{#1}}
+      \par
+      \vfill
+      \large
+      \vbox{\parskip=0.8cm #2}\par
+      \vspace*{2cm}\par
+      % \reporttype\\[0.3cm]
+      % \hbox{#3}%\\[2cm]\
+      % \vspace*{1cm}
+      %{\large\sf\textbf{\Date~\Month~\Year}}
+   }\vss}
+  }}
+\end{singlespacing}
+\newpage
 }
 
-\caption{\label{fig-timeline}Timeline of recent earthquakes on La Palma}
+\makeatletter
+\def\maketitle{\front{\expandafter{\@title}}{\@author}{\@organization}}
+\makeatother
 
-\end{figure}%
+% Authors
 
-\textsubscript{Source:
-\href{https://isaiahespi.github.io/cdce_empowerment/index.qmd.html}{Article
-Notebook}}
+\author{\sf{\Large\textbf{Isaiah Espinoza} \\\large Research
+Assistant\\[0.5cm]}}
+%\lfoot{\sf Espinoza: April 22, 2024}
+\begin{document}
+\maketitle
+\begin{abstract}
+An increase in turnover among the election administration workforce has
+been observed and become recently salient. Election administration work
+(e.g., poll workers) is certainly difficult. The impetus of the
+following review was to discover what lessons, supports, or specific
+interventions could be derived from selected literature to potentially
+help reduce turnover, turnover intention, and boost morale for election
+workers in particular. A selection of academic literature on
+psychological empowerment and turnover are reviewed for that purpose.
+\end{abstract}
 
-\textsubscript{Source:
-\href{https://isaiahespi.github.io/cdce_empowerment/index.qmd.html}{Article
-Notebook}}
+\setstretch{1.5}
+\section{Introduction}\label{introduction}
 
-Based on data up to and including 1971, eruptions on La Palma happen
-every 79.8 years on average.
+Psychological empowerment has been studied extensively within
+organizational psychology and management studies with the aim of
+determining drivers for workplace performance and retention. Researchers
+of the field were interested in understanding how workers adapt and
+adjust to work environments, what motivates workers to go above and
+beyond minimal workplace performance, and what might decrease the
+likelihood of turnover. Drawing upon and contributing to the burgeoning
+psychology research on motivation in the later half of the 1980s and
+early 1990s, a prominent concept to emerge was psychological
+empowerment, which was theorized to be a multidimensional concept
+manifested as a set of four distinguished `cognitions': \emph{meaning},
+\emph{competence}, \emph{self-determination}, and \emph{impact}. The
+psychological empowerment scale was later developed, tested and applied
+in multiple studies inquiring into whether it served as a mediator for
+certain workplace behaviors and turnover intention.
 
-Studies of the magma systems feeding the volcano, such as Marrero et al.
-(2019), have proposed that there are two main magma reservoirs feeding
-the Cumbre Vieja volcano; one in the mantle (30-40km depth) which
-charges and in turn feeds a shallower crustal reservoir (10-20km depth).
+In contrast, the academic literature examining turnover intention have
+tended to focus primarily on the workplace context and organizational
+factors that influence a workers job satisfaction and organizational
+commitment. This review summarizes a selection of the literature on the
+concept, measurement, and examination of psychological empowerment as it
+influences workplace behavior and worker attitudes. Also reviewed are
+the interventions suggested which aim to reduce turnover, increase
+empowerment, workplace satisfaction, and improve worker performance. The
+reviewed works are also scrutinized to a certain extent out of
+precaution lest a simple review of reported findings are uncritically
+accepted at face value.
 
-Eight eruptions have been recorded since the late 1400s
-(Figure~\ref{fig-timeline}).
+\section{Psychological Empowerment: theory and
+measurement}\label{psychological-empowerment-theory-and-measurement}
 
-Data and methods are discussed in Section~\ref{sec-data-methods}.
+\subsection{Powerlessness in the
+workplace}\label{powerlessness-in-the-workplace}
 
-Let \(x\) denote the number of eruptions in a year. Then, \(x\) can be
-modeled by a Poisson distribution
+Initially, the idea of \emph{powerlessness} in the workplace referred to
+feeling a lack of autonomy and influence in the workplace
+(\citeproc{ref-ashforth1989}{Ashforth 1989}). Autonomy was generally
+understood as, ``The degree to which the job provides substantial
+freedom, independence, and discretion to the employee in scheduling his
+work and in determining the procedures to be used in carrying it out''
+(\citeproc{ref-hackman1975}{Hackman and Oldham 1975}). Ashforth
+(\citeproc{ref-ashforth1989}{1989}) argued that feelings of
+powerlessness were incurred from unmet expectations and desires of
+personal autonomy and involvement in the workplace. His argument was
+that the greater the difference between expectations and perception of
+reality in the workplace generates feelings of powerlessness. Such
+powerlessness kicks off a contrived process of psychological adjustment
+and coping. People first react to the difference between expectations
+and reality, then develop increased feelings of inability to improve
+their situation (i.e., helplessness) based on the realities of their
+experience at work. Then, finally, come to feel detached and alienated
+from the job and organization entirely.
 
-\begin{equation}\phantomsection\label{eq-poisson}{
-p(x) = \frac{e^{-\lambda} \lambda^{x}}{x !}
-}\end{equation}
+\begin{quote}
+``The findings, then, suggest that powerlessness and high generalized
+expectations of control\footnote{Note that ``generalized expectations of
+  control'' here simply refers to self-reported educational attainment
+  on a 7-point scale.} give rise to unmet expectations/desires for
+control; that the latter two constructs fuel reactance; that reactance
+in turn, along with powerlessness, increases helplessness; and that
+helplessness increases work alienation. The model suggests that the
+experience of powerlessness can be quite traumatic, entailing
+frustration, disruptive behaviors, feelings of helplessness, and loss of
+job involvement and organizational identification. Conversely, it
+suggests that fostering a sense of control can forestall frustration and
+reactance, increase perceptions of organizational legitimacy and
+self-efficacy, and stimulate involvement.''
+(\citeproc{ref-ashforth1989}{Ashforth 1989, 234})
+\end{quote}
 
-where \(\lambda\) is the rate of eruptions per year. Using
-Equation~\ref{eq-poisson}, the probability of an eruption in the next
-\(t\) years can be calculated.
+\subsubsection{Recommended
+Interventions}\label{recommended-interventions}
 
-\begin{longtable}[]{@{}ll@{}}
-\caption{Recent historic eruptions on La
-Palma}\label{tbl-history}\tabularnewline
+The recommended interventions of this early study were simple and
+intuitive: make clear the actual link between the actions workers take
+and the resulting outcomes they can expect to see in order to increase
+perceptions of personal autonomy and control over workplace outcomes. To
+this end, ``\ldots provide realistic job previews, specific and
+challenging goals, prompt and balanced feedback, contingent
+reinforcement, and appropriate role models\ldots{}'', and remove
+obstacles which impede personal control
+(\citeproc{ref-ashforth1989}{Ashforth 1989, 234}). In addition, it was
+suggested that management relax or delegate control to those workers
+whose jobs hold less actual influence or significance. By providing
+opportunities for workers with ``low power jobs'' to participate in the
+strategic and operational decisions usually confined to managerial
+roles, workers may come to feel as though their input is not only valued
+but influential upon the final decisions made\footnote{Note that this is
+  the same reasoning explicated in procedural theories of representative
+  democracy, though under different predicate assumptions
+  (\citeproc{ref-dahl1961}{Dahl 1961}; \citeproc{ref-dahl2015}{Dahl and
+  Shapiro 2015}).}.
+
+Although the reported findings of Ashforth
+(\citeproc{ref-ashforth1989}{1989})'s study were narratively intuitive,
+and the interventions sensible, it is unclear whether the theoretical
+process of powerlessness results in powerlessness or begins from it.
+From Ashforth's study, it's unclear exactly which variables are the
+dependent versus the independent variables, but it is clear that the
+primary variable of interest, powerlessness, is the independent variable
+of most importance to the author. Powerlessness, however, was measured
+by a combination of five different subscale measures derived from
+multiple sources, one of which included 32 survey items\footnote{The
+  measurement of powerlessness was assessed by a combination of 1) the
+  3-item Job Autonomy Scale from the Job Diagnostics Survey
+  (\citeproc{ref-hackman1974}{Hackman and Oldham 1974},
+  \citeproc{ref-hackman1975}{1975}), 2) the 4-item Job Authority scale
+  from the revised Organizational Assessment Instrument, 3)
+  self-reported job grade, 4) ratings of autonomy and participation
+  (based on job title) by one job evaluation specialist, 5) a 32-item
+  Powerlessness scale which consisted of a 15-item Participation
+  subscale and a 17-item Autonomy subscale. It is not entirely clear
+  where the 32-item powerlessness scale is adapted from.}. The outcomes,
+however, were not just one but many theorized to occur in sequence from
+the same causal factors--powerlessness and, evidently, higher education.
+However, the author affirms this theory because powerlessness was
+significantly associated with \emph{reactance} (behaviors),
+\emph{helplessness}, and \emph{work alienation} each independently in
+the model.
+
+\subsection{The Interpretive Model of
+Empowerment}\label{the-interpretive-model-of-empowerment}
+
+The difficulty of using such a complicated measurement scale for
+powerlessness likely prompted researchers to refine a more cohesive
+theoretical model of empowerment. The publication by Thomas and
+Velthouse (\citeproc{ref-thomas1990}{1990}) elaborates on a theoretical
+model of empowerment based on review of relevant literature (up to the
+point of publication in 1990)\footnote{Note that in the article cited,
+  no test of the theoretical model is included, and no empirical results
+  presented to validate the model. Instead, the authors rely on
+  references to literature from psychology and clinical researchers. The
+  abstract of the cited article mentions preliminary evidence that
+  substantiates it, but the preliminary evidence mentioned in the
+  abstract is confined to brief summaries of two different studies near
+  the end of the article, where the evidence described suggests support
+  for the authors interpretive model of empowerment. Thus, the review
+  article argues for a particular non-traditional paradigm of management
+  which fosters a worker's empowerment in theory.}. These authors
+conceptualized empowerment as a multidimensional concept and
+operationalized empowerment as \emph{intrinsic task motivation}, which
+refers to positive experiences derived directly from doing some task.
+The cognitive model developed involves identifying certain cognitions,
+referred to as \emph{task assessments}, which manifests as a set of four
+cognitions reflecting an individual's orientation to their task/work
+role: \emph{meaning}, \emph{competence}, \emph{self-determination}, and
+\emph{impact}. These task assessments are assumed to be the ``proximal
+cause'' of intrinsic task motivation. That is to say, these four
+``cognitions'' are considered latent constructs of their own, which in
+turn manifest the second-order latent construct empowerment\footnote{The
+  attempt to understand empowerment as ``intrinsic task motivation'' did
+  not stick in the long run, but the multidimensional nature of the
+  construct, as well as the four essential components, did.}.
+
+An assumption of the conceptual definition of empowerment is that it is
+not understood as an enduring personality trait generalizable across
+situations. The set of four cognitions, i.e., task assessments, are said
+to be shaped by the work environment. This fixes empowerment to the
+specific workplace domain.
+
+To put the theory in brief: People are empowered (i.e., energized) when
+they are \emph{intrinsically motivated} to carry out some task, and they
+feel \emph{intrinsically motivated} when they 1) judge the tasks as
+sufficiently \emph{impactful} (i.e., the degree to which behavior is
+seen as making a difference in terms of accomplishing the purpose of the
+task), 2) judge themselves as \emph{competent} (i.e., self-efficacy), 3)
+find the task \emph{meaningful}, and 4) feel as though their decision to
+do the task is \emph{self-determined} (i.e., autonomous). They come to
+judge specific tasks in this way by their particular kind of
+\emph{interpretive style} and \emph{global beliefs} about work in
+general as information is gleaned from event outcomes observed in the
+workplace environment. That is to say, they interpret information from
+the outcomes in whatever way is concordant to their interpretive style
+and ``global assessments'' of tasks. When their interpretation of the
+outcomes leads to higher task assessments (i.e., higher values of the
+four cognitive variables), they then feel \emph{intrinsically} motivated
+to carry out the task, resulting in behaviors in which they may
+demonstrate \emph{flexibility}, \emph{initiative}, and
+\emph{resilience}. Such behavioral outcomes are attributed purely to the
+authors' theory on the effects of the four components of ``intrinsic
+task motivation''.
+
+Ultimately, this theory uses the word ``intrinsic'' when it is
+unnecessary and not aligned with its meaning. The authors could remove
+the word ``intrinsic'' entirely and it would make no difference. This is
+because they confuse what intrinsic motivation means and don't properly
+distinguish it from extrinsic motivation. The authors create a model of
+motivation that relies on interpretation of information gleaned from
+outcomes and stimulus from the environment, yet they consider it
+intrinsic because individual's may differ in what they perceive and how
+they interpret it. The entire point of intrinsic motivation is that the
+motivation to act is perceived to be derived from an internal
+source--the individual--independent of external context and pressures.
+So information on outcomes in the environment should make little to no
+difference because it is motivation \emph{to do the task itself}, not
+the prospective outcome which drives the individual behavior. There's a
+vast literature on the psychology of motivation with multiple and
+competing perspectives, especially with regard to notions of `intrinsic'
+v. `extrinsic' motives (\citeproc{ref-deci2012}{Deci and Ryan 2012};
+\citeproc{ref-ryan2000}{Ryan and Deci 2000},
+\citeproc{ref-ryan2017}{2017}, \citeproc{ref-ryan2021}{2021}; for
+contrast, see \citeproc{ref-kruglanski2017}{Kruglanski et al. 2017}; and
+\citeproc{ref-kruglanski2022}{Kruglanski et al. 2022}).
+
+Psychological theories vary considerably in explanations of behavior,
+especially classics, whereas one theory maintains that all behaviors are
+motivated by rewards (see \emph{operant theory},
+\citeproc{ref-skinner1965}{Skinner 1965}), another asserts that all
+behaviors are motivated by physiological drives, to which intrinsically
+motivated behaviors were ones that provided satisfaction of
+psychological needs (\citeproc{ref-hull1943}{Hull 1943}). More recent
+explanations of behavior still vary considerably, although a relatively
+recent Self-Determination Theory follows motivational theories to which
+behavior seeks to satisfy psychological needs
+(\citeproc{ref-ryan2000}{Ryan and Deci 2000}). In this work,
+\emph{intrinsic motivation} refers to doing something because the
+activity is inherently interesting or enjoyable itself; whereas doing
+something because it leads to some separable outcome refers to
+\emph{extrinsic motivation}. Although, the distinction isn't necessarily
+as simple due to the fact that the classifying criteria for a behavior
+to be motivated intrinsically (opposed to extrinsically) is quite high
+and generally excludes many every-day behaviors. Ryan and Deci
+(\citeproc{ref-ryan2000}{2000}), the progenitors of Self-Determination
+Theory proposed that the need for competence underlies all motivation,
+but full autonomy must be experienced for an activity to be truly
+intrinsically motivated. Autonomy, in this theoretical framework, refers
+to the need to experience volition by controlling one's own behavior
+such that it integrates with one's sense of self, and the experience of
+autonomy depends on the degree to which a person's behavior is motivated
+by the level of external control versus the intrinsic motivation (for
+review see \citeproc{ref-higgins2021}{Higgins and Nakkawita 2021}).
+
+\subsubsection{Recommended
+Interventions}\label{recommended-interventions-1}
+
+Two different kinds of interventions are thought to increase empowerment
+(i.e., intrinsic task motivation): either adjust the working environment
+outcomes (i.e., environmental changes) or re-frame how environment
+outcomes are interpreted by individual workers (i.e., interpretive
+intervention strategies). The \emph{environmental changes} intervention
+strategy relates to the ideas of prior research which professes that
+interventions modifying external variables such as organizational
+structure, managerial strategies, and types of information all work as
+interventions to produce increased feelings of empowerment. Thomas and
+Velthouse (\citeproc{ref-thomas1990}{1990}) list a few environmental
+variables which they theorized would shape the four cognitions/task
+assessments: leadership, delegation, job design, and reward systems
+(\citeproc{ref-thomas1990}{Thomas and Velthouse 1990}, see Table 1 on
+page 676).
+
+The latter ``\emph{interpretive intervention strategies}'' are aimed at
+addressing/modifying how individual workers construe work outcomes and
+consequences to increase worker empowerment. Only one ``interpretive
+intervention strategy'' is mentioned as a feasible solution according to
+the model: self-empowerment programs. Such programs are thought to help
+individuals identify and practice styles theoretically conducive to
+enhance tasks assessments crucial to increasing empowerment. The authors
+say, ``The interpretive styles in the model are viewed as developed
+\emph{habits} rather than innate abilities. These habits are relatively
+isolated from day-to-day learning activities''
+(\citeproc{ref-thomas1990}{Thomas and Velthouse 1990, 677}, emphasis
+original). They go on to say,
+
+\begin{quote}
+``\ldots researchers/clinicians have demonstrated that such styles can
+be changed by making the individual aware of assumptions that are
+inherent in a style and by teaching individuals to consciously monitor
+those ongoing interpretations and their consequences\ldots Thus,
+according to the model,''self-empowerment'' programs are feasible
+solutions to help individuals identify and practice styles of
+attributing, evaluating, and envisioning, which would enhance their task
+assessments.'' (\citeproc{ref-thomas1990}{Thomas and Velthouse 1990,
+677})
+\end{quote}
+
+The authors don't detail what these self-empowerment programs look like,
+but the goal is essentially to change the way the worker interprets the
+things that happen at work in order to make such outcomes more
+empowering. Some preliminary empirical support for the aforementioned
+interpretive styles and task assessments. Citing to unpublished
+work\footnote{The evidence the authors cite to are two unpublished
+  doctoral dissertations. The description of the two studies suggests
+  that these dissertations were directly testing the cognitive model of
+  empowerment they introduce in their review. However, these studies
+  were unable to be located for direct citation.}, the four cognition
+task assessments of the empowerment model mediated the relationship
+between positive feedback and self-reports of intrinsic motivation. In
+other words, positive feedback supposedly caused increases in the four
+cognitive task assessments (e.g., meaning, competence,
+self-determination, and impact) which, in turn, increased self-reported
+ratings of intrinsic motivation (\citeproc{ref-thomas1990}{Thomas and
+Velthouse 1990, 677}). However, it is not clear how the four components
+of empowerment were measured. Development of a survey measurement
+instrument didn't come about until about five years after the model was
+theorized.
+
+\subsection{Psychological Empowerment
+Scale}\label{psychological-empowerment-scale}
+
+The theoretical model existed for some time before an attempt was made
+to develop a measure of psychological empowerment. Spreitzer
+(\citeproc{ref-spreitzer1995}{1995}) developed and tested the validity
+of a novel measure of psychological empowerment, following the cognitive
+model of empowerment (i.e., ``intrinsic task motivation'') theorized by
+Thomas and Velthouse (\citeproc{ref-thomas1990}{1990}) and based on
+measurement scales adapted from previous research.
+
+\begin{quote}
+``In sum, psychological empowerment is defined as a motivational
+construct manifested in four cognitions: meaning, competence,
+self-determination, and impact. Together, these four cognitions reflect
+an active, rather than a passive, orientation to a work role. By active
+orientation, I mean an orientation in which an individual wishes and
+feels able to shape his or her work role and context. The four
+dimensions are argued to combine additively to create an overall
+construct of psychological empowerment. In other words, the lack of any
+single dimension will deflate, though not completely eliminate, the
+overall degree of felt empowerment.''
+(\citeproc{ref-spreitzer1995}{Spreitzer 1995, 1444})
+\end{quote}
+
+The scale includes 12-items with the component dimensions measured with
+three items each. Validity and reliability was assessed for the four
+components of empowerment by examination of the overall Cronbach's alpha
+(\(\alpha\)) of the scale and the same was done for each component as
+well. The measurement scales for the four components of empowerment were
+found to be valid and moderately reliable. Second-order confirmatory
+factor analysis (CFA)\footnote{Second-order confirmatory factor analysis
+  is structurally equivalent to first-order CFA: there is an
+  unobservable latent factor (i.e., construct) theorized to be
+  influential upon observable referents, or indicators. For second-order
+  CFA, the latent factor is theorized to be a common higher level factor
+  influential upon a set of other lower level latent component factors.
+  In this case, psychological empowerment is the common second-order
+  latent factor that underlies the four latent component factors (e.g.,
+  meaning, impact, competence, self-determination).} was used to assess
+the convergent and discriminant validity of the empowerment measures in
+both samples. The items for each component of empowerment strongly
+loaded on the appropriate component factor (e.g., items measuring
+competence all loaded onto the same factor). However, Spreitzer found
+significant correlations between the component factors, suggesting a
+lack of discriminant validity between the four dimensional components of
+empowerment. However, this is said to be acceptable since the four
+dimensions are not equivalent with each other, but it is recommended
+that further research should be done to further refine the measurement
+of psychological empowerment (\citeproc{ref-spreitzer1995}{1995, 1458}).
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.1944}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.8056}}@{}}
+\caption{Psychological Empowerment 12-item Measurement scale
+(\citeproc{ref-spreitzer1995}{Spreitzer
+1995})}\label{tbl-empowerment}\tabularnewline
 \toprule\noalign{}
-Name & Year \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Component
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Item wording
+\end{minipage} \\
 \midrule\noalign{}
 \endfirsthead
 \toprule\noalign{}
-Name & Year \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Component
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Item wording
+\end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-Current & 2021 \\
-Teneguía & 1971 \\
-Nambroque & 1949 \\
-El Charco & 1712 \\
-Volcán San Antonio & 1677 \\
-Volcán San Martin & 1646 \\
-Tajuya near El Paso & 1585 \\
-Montaña Quemada & 1492 \\
+Meaning & \begin{minipage}[t]{\linewidth}\raggedright
+\begin{itemize}
+\tightlist
+\item
+  The work I do is very important to me.
+\item
+  My job activities are personally meaningful to me.
+\item
+  The work I do is meaningful to me.
+\end{itemize}
+\end{minipage} \\
+Competence & \begin{minipage}[t]{\linewidth}\raggedright
+\begin{itemize}
+\tightlist
+\item
+  I am confident about my ability to do my job.
+\item
+  I am self-assured about my capabilities to perform my work activities.
+\item
+  I have mastered the skills necessary for my job.
+\end{itemize}
+\end{minipage} \\
+Self-Determination & \begin{minipage}[t]{\linewidth}\raggedright
+\begin{itemize}
+\tightlist
+\item
+  I have significant autonomy in determining how I do my job.
+\item
+  I can decide on my own how to go about doing my work.
+\item
+  I have considerable opportunity for independence and freedom in how I
+  do my job.
+\end{itemize}
+\end{minipage} \\
+Impact & \begin{minipage}[t]{\linewidth}\raggedright
+\begin{itemize}
+\tightlist
+\item
+  My impact on what happens in my department is large.
+\item
+  I have a great deal of control over what hap pens in my department.
+\item
+  I have significant influence over what happens in my department.
+\end{itemize}
+\end{minipage} \\
 \end{longtable}
 
-Table~\ref{tbl-history} summarises the eruptions recorded since the
-colonization of the islands by Europeans in the late 1400s.
+It's important to make a quick note on the survey sample and data
+collection strategy used in this study to develop and validate the
+measurement scale of psychological empowerment. Especially since this
+scale is referenced and drawn upon often in subsequent research. Survey
+data was collected for two distinct samples of a Fortune 50 industrial
+company. The first sample (\(n = 393\)) comprised of managers from
+across departments. Manager respondents were surveyed over a period of
+three years until a 100\% response rate was achieved (this was not panel
+data). This first primary sample consisted of mid-level managers,
+\(93\%\) male, \(85\%\) White, average age of \(46\) years, an average
+tenure of \(13\) years at the company, and average time in position of
+\(3\) years. The extent that this sample is representative of people
+with jobs, generally speaking, is probably pretty low. But more
+importantly, the author was trying to develop and validate a novel
+measure of empowerment by testing it on a sample that is likely to be
+more empowered than the average worker. It is not clear why the sample
+was confined to this group, but it seems like it would have made more
+sense to randomly sample all employees.
 
-\begin{figure}
+In contrast, the second sample was surveyed at two different intervals
+spanning five months in between survey administration, and consisted of
+(non-managerial) employees (\(n = 128\)) of the same company. The author
+reported a difference in measurement validity between the two samples;
+the Cronbach's alpha for the overall measure of empowerment was
+\(\alpha = 0.72\) for the primary industrial sample of managers, but
+\(\alpha = 0.62\) for the second sample of employees. This calls into
+question whether the equivalence assumption
+(\citeproc{ref-pietryka2022}{Pietryka and MacIntosh 2022}) holds for
+this measurement scale. Additionally, the primary sample of managers
+were surveyed across a period of three years at the beginning of a
+managerial development program. Seeing as how these managers all work in
+the same company, it apparently wasn't considered that any of the
+managers of the sample would talk to each other about the survey over
+the period of three years, which potentially may have contaminated the
+results of the study.
 
-\centering{
+Using the new measure for psychological empowerment, Spreitzer
+(\citeproc{ref-spreitzer1995}{1995}) tested whether the scale
+significantly predicted two outcomes: \emph{managerial effectiveness}
+and \emph{innovative behavior}. The former was defined as, ``the degree
+to which a manager fulfills or exceeds work role expectations''
+(\citeproc{ref-spreitzer1995}{1995, 1448})\footnote{Note that
+  ``managerial effectiveness'' does not only pertain to workers who are
+  employed as managers, but rather apparently refers to a kind of
+  effectiveness which would be described as ``managerial''. Spreitzer
+  explains, ``Because, by definition, empowered managers see themselves
+  as competent and able to influence their jobs and work environments in
+  meaningful ways, they are likely to proactively execute their job
+  responsibilities by, for instance, anticipating problems and acting
+  independently, and hence are likely to be seen as effective.''
+  (\citeproc{ref-spreitzer1995}{1995, 1448}).}. Innovative behavior was
+defined as ``the creation of something new or different''. It is unclear
+what survey items were used to measure these two behavioral outcomes,
+but both managerial effectiveness and innovative behavior was
+ascertained by questioning the subordinate employees of the managers
+from the primary sample. The two behavioral outcomes were found to be
+significantly related to empowerment, but the marginal fit of the model
+was said to be likely due to multicollinearity between those two
+behavioral outcomes.
 
-\includegraphics{images/la-palma-map.png}
+Spreitzer also fit a Multiple Indicators Multiple Causes (MIMIC) model
+to test whether certain factors were antecedent to empowerment. This
+attempt to identify individual and contextual factors antecedent to
+empowerment found partial support, but was not substantially convincing.
+Many of the independent constructs theorized to influence empowerment
+overlap in definition or description and are not independent in that
+they potentially cause or influence each other. Each factor is
+nevertheless theorized to have independent influence on empowerment. For
+example, feedback (i.e., information about performance) and self-esteem
+are considered as two independent factors that are antecedent to
+empowerment. The former contextual, the latter a dispositional trait.
+However, feedback on performance likely impacts self-esteem despite its
+conception as a stable and enduring disposition. That raises issues of
+endogeneity (two independent variables not so independent).
 
-}
+Overall, the development and test for the original measurement scale for
+psychological empowerment can be viewed as a first step towards
+measuring empowerment in a work related context. However, no real useful
+measurement instrument for psychological empowerment is made readily
+available from this study. The methods used to test validity and
+reliability of the four measurement scales for empowerment is
+interesting but complex, and doesn't appear to result in an actual
+estimate of the latent construct for empowerment itself. Instead,
+convergent validity is obtained by not discriminant validity for the
+four components of empowerment. Interested researchers might be better
+off developing and validating a single measurement scale for empowerment
+itself rather than rely on measuring the presence of four separate
+latent component constructs with 12 requisite survey items.
 
-\caption{\label{fig-map}Map of La Palma}
+\section{Psychological Empowerment as a
+Mediator}\label{psychological-empowerment-as-a-mediator}
 
-\end{figure}%
+Multiple subsequent studies inquired into whether psychological
+empowerment functioned as a mediator for workplace performance, or
+incorporated the concept or measurement thereof into studies
+investigating the antecedents to turnover intentions. This line of
+research generally finds that psychological empowerment plays a positive
+mediating role in helping to increase Organizational Citizenship
+Behavior (OCB) and levels of performance
+(\citeproc{ref-taylor2013}{Taylor 2013}), workplace satisfaction and
+organizational commitment (\citeproc{ref-liden2000}{Liden, Wayne, and
+Sparrowe 2000}), and mediates the effect of perception of authentic
+leadership from one's supervisor
+(\citeproc{ref-shapira-lishchinsky2014}{Shapira-Lishchinsky and Tsemach
+2014}). However, the latter two of the cited studies
+(\citeproc{ref-liden2000}{Liden, Wayne, and Sparrowe 2000};
+\citeproc{ref-shapira-lishchinsky2014}{Shapira-Lishchinsky and Tsemach
+2014}) exploring psychological empowerment as mediator for other
+outcomes are questionable and should be reviewed with increased scrutiny
+before the reported findings are readily accepted.
 
-La Palma is one of the west most islands in the Volcanic Archipelago of
-the Canary Islands (Figure~\ref{fig-map}).
+The earliest of these studies shows that the \emph{meaning} and
+\emph{competence} dimensions of psychological empowerment have
+significant influence on organizational commitment
+(\citeproc{ref-liden2000}{Liden, Wayne, and Sparrowe 2000}). However,
+the cited study appears somewhat questionable in terms of method and
+measurement of the relevant variables\footnote{The cited study uses the
+  term ``mediator variables'' to describe the empowerment component
+  dimensions, but the analysis conducted appears to have consisted of
+  multivariate OLS. The dependent variables were workplace satisfaction,
+  organizational commitment, and job performance, whereas the
+  independent variables included every component of empowerment,
+  leadership-member exchange (relationship with leadership) and
+  team-member exchange (relationship with coworkers), and job
+  characteristics. The authors present three OLS models, with the last
+  multivariate OLS model being the most significant as it includes both
+  the ``mediator variables'' (empowerment components) and other
+  independent variables all together. Looking at this Table 4
+  (\citeproc{ref-liden2000}{Liden, Wayne, and Sparrowe 2000, 413}), the
+  only statistically significant positively related independent
+  variables to work satisfaction are \emph{job characteristics} and the
+  \emph{meaning} component of empowerment, whereas \emph{competence}
+  shows a significant \emph{negative influence on work satisfaction}--on
+  average and holding all else equal. This finding in Table 4 suggests
+  that increased in feelings of competence in one's job \emph{decreases}
+  work satisfaction. In addition, The measurement for work satisfaction
+  was measured by marking ``yes'' for adjectives connotating
+  satisfaction, but a ``yes'' = 3, whereas a ``no'' = 0. This
+  measurement would seemingly inflate the Cronbach's alpha for work
+  satisfaction and doesn't convey convincing construct nor face
+  validity. The measurement of the relevant variables save for the
+  empowerment components and the analysis of the study makes the
+  reported findings in this article appear dubious.}.
 
-\begin{figure}[H]
+A relatively more recent study examined whether psychological
+empowerment serves as a mediating variable between teachers perceptions
+of authentic leadership and OCB and withdraw behaviors (e.g., lateness
+and voluntary absence frequency)
+(\citeproc{ref-shapira-lishchinsky2014}{Shapira-Lishchinsky and Tsemach
+2014}). The essential findings of the research intuitively suggest that
+when the boss is perceived as an `authentic leader', employees
+(teachers) are increasingly motivated to perform above and beyond what
+is required of them and report no intent to leave their current job.
+Here, issues arise in the description and measurement of psychological
+empowerment, which somewhat undermine the reported findings. The cited
+authors employ a selective approach to the use of different measurement
+scales, and when it came to psychological empowerment, chose to reduce
+the component dimensions down to two and selected eight of the original
+12 survey items\footnote{The confirmatory factor analysis conducted by
+  Shapira-Lishchinsky and Tsemach
+  (\citeproc{ref-shapira-lishchinsky2014}{2014}) yielded two factors but
+  the method is literally an analysis meant to confirm the number of
+  expected factors previously theorized. The authors operationally
+  conceived of psychological empowerment as a two dimensional construct.
+  The authors limited the number of factors down to two, selected 8 out
+  of 12 items from the original psychological empowerment scale, and
+  then conducted an analysis to confirm that survey data sufficiently
+  loads onto only two factors. The thing is, the original psychological
+  empowerment scale is comprised of four latent factors derived from
+  12-items, where 3 items are used to measure each component factor. The
+  original conception of psychological empowerment has four (latent)
+  dimensions. Seeing as how the analysis by Spreitzer
+  (\citeproc{ref-spreitzer1995}{1995}) found that divergent validity was
+  lacking among the component factors, the selective use of various
+  survey items from the original scale is likely to only exacerbate such
+  issues of scale validity.}
 
-\centering{
+Research by Taylor (\citeproc{ref-taylor2013}{2013}) is the least
+problematic of these studies and most easily summarized. Goal setting
+plans by organizations positively influenced psychological empowerment
+and helpful and cooperative behavior toward other employees in the
+organization (i.e., `organizational citizenship behavior' toward
+individuals). Goal setting increased self-reports of individual-oriented
+organizational performance behavior (OCBI)\footnote{OCBI : ``I help
+  others who have heavy workloads'', ``I take time to listen to
+  co-workers' problems and worries''. ``I go out of my way to help new
+  employees.'' ``I assist my supervisor with his/her work even when I am
+  not asked.''} more so than self-reported organization-oriented
+performance behaviors (OCBO)\footnote{OCBO: ``My attendance at work is
+  above the norm'', ``I obey informal rules that maintain order'', ``I
+  give advance notice when I am unable to work''}. Perceived difficulty
+of goals\footnote{Goal-difficulty: ``A high degree of skill and know-how
+  is necessary to do my job well.'', ``Jobs like mine are quite
+  demanding day after day.''} positively influenced both OCBI and OCBO.
+Perception that job goals are clear, specific, and fully understood
+(goal-specificity)\footnote{Goal-specificity: ``My responsibilities at
+  work are very clear and specific.'', ``I understand fully which of my
+  job duties are more important than others.''} did not directly
+influence either OCBI or OCBO. However, goal-specificity indirectly
+influenced OCBI through the indirect effect of psychological
+empowerment. In other words, perception that job goals are clear,
+specific, and fully understood positively influences psychological
+empowerment which in turn indirectly influences individual-oriented
+performance (OCBI). Goal-specificity and goal-difficulty both positively
+influenced psychological empowerment, but the effect of goal-specificity
+was larger in comparison.
 
-\includegraphics{index_files/figure-latex/notebooks-explore-earthquakes-fig-spatial-plot-output-1.png}
+\subsubsection{Recommended Intervention
+Strategies}\label{recommended-intervention-strategies}
 
-}
+Review of the aforementioned studies conveys the impression that
+anything which may increase any of the four components of psychological
+empowerment should result in positive improvement in worker performance,
+enthusiasm on the job, and helpful workplace behaviors. This, however,
+tells us little more than what may be obvious without providing specific
+interventions on how to go about doing so.
 
-\caption{\label{fig-spatial-plot}Locations of earthquakes on La Palma
-since 2017}
+Perceiving the boss to be authentic, or otherwise nice, good, and
+honest, increases the degree to which a worker feels like they have an
+impact at work, but the research showing this also shows that perceiving
+the boss to be authentic also increases one's willingness to find work
+elsewhere (\citeproc{ref-shapira-lishchinsky2014}{Shapira-Lishchinsky
+and Tsemach 2014}). The recommendation when it comes to leadership is to
+``\ldots promote high standards of authentic leadership''
+(\citeproc{ref-shapira-lishchinsky2014}{Shapira-Lishchinsky and Tsemach
+2014, 701}), which is vague and unhelpful. Deriving meaning and feeling
+competent in one's work significantly influences work satisfaction,
+organizational commitment, and better ratings of job performance from
+one's supervisor (\citeproc{ref-liden2000}{Liden, Wayne, and Sparrowe
+2000}), but this research is highly dubious since it shows findings that
+are contradictory: deriving meaning from one's work increases work
+satisfaction but feeling competent in one's work also \emph{decreases}
+work satisfaction.
 
-\end{figure}%
+The best intervention suggestion comes from Taylor
+(\citeproc{ref-taylor2013}{2013}),
 
-\textsubscript{Source:
-\href{https://isaiahespi.github.io/cdce_empowerment/notebooks/explore-earthquakes-preview.html\#cell-fig-spatial-plot}{Explore
-Earthquakes}}
+\begin{quote}
+``The findings suggest that public managers can promote OCB from
+goal-setting plans in two ways. One is to ensure that the goal-setting
+plans are well designed and implemented. In particular, challenging
+goals that are accepted by employees can motivate higher levels of
+performance. Another is to improve employees' views of their work
+environment and their individual capacity so that they feel
+psychologically empowered at work. To encourage employees to see their
+job as more meaningful and to satisfy their self-efficacy and
+self-determination needs, managers should help employees understand the
+scope of their job and responsibilities, articulate the overlap between
+the agency's goals and the employees' personal goals, and demonstrate
+support for employees in their pursuit of the goals (e.g., provide
+access to appropriate professional development programs)''
+(\citeproc{ref-taylor2013}{2013, 461}).
+\end{quote}
 
-Figure~\ref{fig-spatial-plot} shows the location of recent Earthquakes
-on La Palma.
+Thus, organizations that set specific and difficult job goals increase
+workers psychological empowerment and helpful performance behavior
+towards individuals in the organization. In particular, setting job
+goals positively influences psychological empowerment which in turn
+improves levels of performance directed to help co-workers and the
+broader organization. Psychological empowerment increases for employees
+who feel their job goals require a high degree of competence and are
+demanding. The same goes for employees who feel that their work goals
+are clear, specific, and fully understood.
 
-\section{Data \& Methods}\label{sec-data-methods}
+\section{Turnover Intention}\label{turnover-intention}
 
-\section{Conclusion}\label{conclusion}
+A related line of research in management and organizational studies
+inquired into factors related to voluntary turnover, which include
+empowerment among others such as job satisfaction and organizational
+commitment. However, these studies do not maintain a strict focus on the
+presence and effect of psychological empowerment, and the 12-item scale
+is not used in to measure empowerment in the following studies. At least
+one study measures empowerment by use of a single item measure on a
+5-point agree/disagree Likert response option format, ``Employees have a
+feeling of personal empowerment with respect to work processes.''
+(\citeproc{ref-pitts2011}{Pitts, Marvel, and Fernandez 2011}). Other
+research includes measurement of constructs which tangentially relate to
+the conceptual components of psychological empowerment without
+referencing them as such. For instance, as part of the measure for
+``functional preferences'' Bertelli (\citeproc{ref-bertelli2007}{2007})
+measures ``intrinsic motivation'' with three survey items drawn from the
+Federal Human Capital Survey (FHCS): ``Employees have a feeling of
+empowerment and ownership of work processes.'', ``My work gives me a
+feeling of personal accomplishment.'', ``I like the kind of work I do.''
+The other half of the comprised ``functional preferences'' measure
+includes items intent on measuring \emph{job involvement}: ``My talents
+are used well in the workplace.'', ``I recommend my organization as a
+good place to work.'', ``The work I do is important.''
 
-\section*{References}\label{references}
-\addcontentsline{toc}{section}{References}
+The variable use of different measurement items speaks to the
+discrepancies noted in results across multiple studies by Tett and Meyer
+(\citeproc{ref-tett1993}{1993}). In their meta-analysis, they attempt to
+untangle the variable findings from the disparate use of multiple
+measures of similar or identical constructs. Their aim was to compare
+job satisfaction and organizational commitment ``as unique precursors of
+employee withdrawal\ldots{}''
+
+\begin{quote}
+``Overall, results support the view that satisfaction and commitment
+each contribute uniquely to the turnover process. Those contributions,
+however, are largely limited to intention/cognitions, and depend on the
+choice of measures.'' (\citeproc{ref-tett1993}{Tett and Meyer 1993,
+279}).
+\end{quote}
+
+The authors say that job satisfaction and {[}self-reported{]} turnover
+intention is sometimes included into an index of ``withdrawal
+cognitions'', which refers simply to thoughts of quitting and intention
+to search for alternative employment. However, turnover intention is
+conceived as a conscious and deliberate willfulness to leave the
+organization. That is, turnover intention is conceptually different from
+a set of ``withdrawal cognitions''. In other words, definitive intention
+to leave the job is different in that it is serious and intentional
+rather than merely passive thoughts about quitting.
+
+The first set of hypotheses (Hypothesis 1a and 1b) expect that
+organizational commitment should show stronger negative correlation than
+job satisfaction with turnover intention (H\textsubscript{1a}) and
+actual turnover (H\textsubscript{1b}). The authors found that job
+satisfaction showed a stronger negative relationship with turnover
+intention than when compared with organizational commitment. This would
+imply, simply, that higher job satisfaction is negatively correlated
+with turnover intention. However, once the more deliberate and serious
+turnover intention is detached from the aforementioned set of passive
+``withdrawal cognitions'', the strength of the negative relationship is
+lessened substantially. Ultimately, the findings suggest that
+organizational commitment and job satisfaction are relatively equal in
+importance for predicting either serious turnover intention or
+withdrawal cognitions (\citeproc{ref-tett1993}{Tett and Meyer 1993,
+280}).
+
+What is important to note, however, is that organizational commitment
+showed a much stronger negative relationship with actual turnover
+(contra. Passive thoughts or deliberate intention). The point is not
+only that organization commitment is likely more important than job
+satisfaction at predicting actual turnover, but crucially that an
+``intention to leave'' measure is not viable as a proxy for actual
+turnover despite its predictive power (\citeproc{ref-tett1993}{Tett and
+Meyer 1993}). Perhaps just as important, the authors also note concerns
+with available measures for job satisfaction. They question the content
+of job satisfaction measures used in prior studies owing to
+``\ldots contamination by items pertaining to withdrawal cognitions''
+and present a list of studies where such contamination was evident
+(\citeproc{ref-tett1993}{Tett and Meyer 1993, 283}). In other words,
+items measuring job satisfaction commonly used included items that also
+measured thoughts about quitting.
+
+The ultimate takeaway appreciable here is that researchers interested in
+ascertaining whether job satisfaction or organizational commitment are
+related to turnover are probably better off constructing and validating
+measurement scales \emph{ex novo} (i.e., from the beginning).
+
+Beyond the accounting of the study by Tett and Meyer
+(\citeproc{ref-tett1993}{1993}), this review finds that scholars from
+different fields approach questions related to empowerment in the
+workplace, job satisfaction, turnover and intention, and organizational
+commitment in distinct ways that place stronger emphasis on some factors
+over others. Of course, this is obvious--a trained economist is apt to
+approach questions about turnover intent by way of reviewing and
+comparing an organization's incentive structure. This seems to be the
+case for the study conducted by Bertelli
+(\citeproc{ref-bertelli2007}{2007}), who compared the effect of the
+aforementioned ``functional preferences'' as a determinant for turnover
+intention between two distinct samples--one where performance-based pay
+reforms were put in-place for supervisors but not for non-supervisors,
+compared to another where no such merit-based pay reforms were enacted.
+
+To summarize, Bertelli (\citeproc{ref-bertelli2007}{2007}) finds that it
+is easier to retain supervisors in federal agencies (the Internal
+Revenue Service, IRS, and Office of the Comptroller of the Currency,
+OCC) who feel like their work is important, who like their work and gain
+feelings of accomplishment from it (i.e., ``functional preferences'').
+This applies to employees who are Non-supervisors too, but
+non-supervisors are also more likely to stay when they view their
+workplace as friendly. A friendly work environment is not related to
+turnover intention for supervisors. Perceptions of inadequate
+pay\footnote{Q58 from the Federal Human Capital Survey (FHCS): ``How do
+  you rate the amount of pay you get on your job?'' (1=very
+  poor\ldots5=very good).} impacts the likelihood of turnover intention
+for non-supervisors. To put simply, federal agency jobs like the IRS and
+OCC for people in non-supervisory positions that are not perceived as
+financially and psychologically rewarding are more likely to see
+increased turnover from non-supervisors. Having friendly coworkers
+helps, as does feeling like the work is important and feelings of
+accomplishment, but perceptions of inadequate pay, micromanaging boss,
+and merit-based performance incentives hanging over head all work to
+increase likelihood for turnover among non-supervisors. Those in
+supervisor positions are best retained when they find their work
+important and personally rewarding--perceptions of inadequate pay
+doesn't drive turnover intention for supervisors.
+
+A brief note on the method. Bertelli writes
+(\citeproc{ref-bertelli2007}{2007}),
+
+\begin{quote}
+``The OCC is included in this study as a''control'' group for examining
+the effect of perceptions of the management incentives unique to the
+IRS. OCC, located with the IRS in the U.S. Department of the Treasury,
+is the regulator of U.S. banks, and its employees engage in similar
+accounting oversight (i.e., auditing) as that performed by the IRS at
+the bank rather than at the individual and corporate levels. Both
+subagencies have a nationwide staff, and their employees possess
+generally similar backgrounds in accounting and financial matters. If
+there are unobserved attributes correlated with the responses to
+questions regarding performance incentives specific to the IRS, they can
+reasonably be addressed by the comparison between results for IRS and
+OCC supervisors. Among those attributes is the pay-banding system. In
+the absence of questions related specifically to pay-banding to
+facilitate a direct test, comparison of these groups is suggestive
+evidence of the effect of pay-banding on bureaucrats' intent to leave
+their jobs. When combined with the information included in survey
+responses, this comparison provides significant leverage in
+understanding the effects of performance incentives on turnover
+intention.'' (\citeproc{ref-bertelli2007}{2007, 239--40})
+\end{quote}
+
+The results of a Probit regression analysis for determinants of turnover
+intention for supervisors across the two samples shows that only
+``functional preferences'' and being employed by the IRS negatively
+predict turnover intention. Bertelli's study takes the difference of
+agency employment as a proxy for the effect of the pay-banding reform
+scheme--that is, ``In the absence of questions related specifically to
+pay-banding to facilitate a direct test, comparison of these groups is
+suggestive evidence of the effect of pay-banding on bureaucrats' intent
+to leave their jobs.'' (\citeproc{ref-bertelli2007}{Bertelli 2007,
+240}).
+
+An alternative interpretation may omit any acknowledgement of the
+pay-banding scheme enacted for supervisors in the IRS, stating simply be
+that working for the OCC as a supervisor positively predicts turnover
+intention among supervisors. The author relies on the strong assumption
+that the two samples match closely enough that differences attributed to
+agency employment serve to indicate the effect of the performance-based
+pay reforms. However, by this logic, any differences between the two
+agencies in organizational or employee policies pertaining to
+supervisors can account for the differential effect. It isn't simply
+that the model doesn't account for every possible difference between the
+two agencies, but rather that the dummy effect of being employed as a
+supervisor in one agency rather another is posited to indicate the
+effect of this specific pay-banding scheme enacted within the IRS.
+
+Additionally, Bertelli (\citeproc{ref-bertelli2007}{2007}) notes the
+striking insignificance of negative perceptions of pay quality for
+supervisors in both the IRS and OCC samples. A single-item question
+measures this attitude about quality of pay, ``How do you rate the
+amount of pay you get on your job?'' where response options range across
+a 5-point scale from very poor to very good. From what can be gathered,
+it appears that higher ratings about quality of pay were not significant
+predictors of turnover intention. The mean response for quality of pay
+across the whole sample (\(n = 1842\)) was \(3.635\) with a standard
+deviation of \(1.003\). The mean response for supervisors only was not
+displayed in the study.
+
+As an aside, Bertelli measures quality of pay with a single-item, but
+does not take into consideration any other forms of compensation,
+especially those unique benefits related to federal employment compared
+to similar jobs in the private sector. Anecdotally, private contractors
+recruit large amount of veteran service members for their specific
+service-related skill sets by offering appealing payment incentives; but
+working as a private contractor does not always come with the benefits
+or other compensatory incentives afforded by work as an employee, nor as
+an employee of the federal government. The decision between working in
+the public or private sector for the same kind of work may come down to
+such a comparative assessment of the financial security offered by
+federal government employment over self-employed contractor work.
+Although the compensation across the two agencies is likely to be
+similar, if not identical, the notion that quality of pay or
+compensation/benefits is insignificant to turnover intention, or actual
+turnover for that matter, is questionable. Especially considering that
+pay quality across both agencies was a significant predictor of turnover
+intention for non-supervisors. Bertelli doesn't include descriptions of
+the average reported income for the studied samples, nor a reference to
+the relative pay scales for government employees that would apply to
+either agency, nor is any consideration made with regard to the
+overarching compensation/benefits structure. The quality of pay is
+demonstrably insignificant for turnover intention, but this should not
+be striking nor surprising for those who have reached supervisor status
+while employed with the federal government; they are paid quite well
+overall.
+
+In contrast, Pitts, Marvel, and Fernandez
+(\citeproc{ref-pitts2011}{2011}) does take \emph{benefits satisfaction}
+into account when inquiring why federal employees choose to leave either
+their respective agencies or government work outright\footnote{The
+  dependent variables--turnout intention to leave agency and turnout
+  intention to leave government--are derived from the same survey item
+  question, ``Are you considering leaving your organization within the
+  next year, and if so, why?'' How the authors are able to create two
+  variables from one question with a dichotomous response of yes or no
+  is beyond me. They don't state that the Federal Human Capital Survey
+  in 2006 asks the question twice for both agency and government
+  turnover intentions, so the reader is left to presume such is the
+  case.}. However, these authors also minimize the impact of pay on
+turnover intention but rely on self-reports of pay
+satisfaction\footnote{Pay satisfaction was measured with a single-item
+  on a 5-point Likert scale: ``Considering everything, how satisfied are
+  you with your pay?''} while also asking confounding satisfaction
+questions related to benefits (e.g., health insurance, retirement
+benefits, life insurance)\footnote{Benefits satisfaction was measured
+  with three items on a 5-point Likert scale: ``How satisfied are you
+  with retirement benefits?'', ``How satisfied are you with health
+  insurance benefits?'', ``How satisfied are you with life insurance
+  benefits?''}, opportunities for advancement\footnote{Advancement
+  Opportunity Satisfaction was measured with a single-item on a 5-point
+  Likert scale: ``How satisfied are you with your opportunity to get a
+  better job in your organization?''}, and even job
+satisfaction\footnote{Job satisfaction was measured with a single-item
+  on a 5-point Likert scale: ``Considering everything, how satisfied are
+  you with your job?''}. All these are arguably related to the same
+underlying factor of compensation someone takes into consideration when
+searching for a job. And this notional latent factor is likely crucial
+to understand the reasons for both recruitment \emph{and} retention. The
+reasons why a person intends to leave may not be related to their
+financial situation if said situation is far more comfortable in
+government work than elsewhere. Yet the reason for choosing to get into
+government work in the first place is likely strongly related to the
+perceived prospective financial security of working in the federal
+government, and might be a foundational reason for the prevalence of
+inter-agency turnover compared to government turnover in general. About
+\(16.1\%\) of federal employees in the sample stated their intent to
+leave their agency for another agency within the federal government. In
+comparison, about \(3.6\%\) of federal employees plan to leave
+government work all together\footnote{Pitts, Marvel, and Fernandez
+  (\citeproc{ref-pitts2011}{2011}) don't specify the number of
+  observations explicitly. Rather, the number of observations in the
+  survey is found in Table 2 on page 755 (\(n = 217,504\)). From the
+  cumulative percentages of those indicating turnover, whether leaving
+  agency or government, that amounts to about \(42,848\) employees from
+  the sample who reported an intention to leave within the next year
+  (assuming my math is correct). The count of those who reported
+  intention to leave an agency but stay working within federal
+  government is approximately \(35,018\). Whereas the approximate count
+  of those who reported intention to leave federal government work
+  overall is \(7,830\). Seeing as how leaving government is far less
+  substantial a figure than leaving an agency, I see the reason for the
+  distinction between the two but it would have been better to include
+  an actual turnover rate of some sort for the past year at least. A
+  statistic from the Bureau of Labor Statistics, or some other
+  concurrent figure that demonstrates just how significant turnover
+  actually is for government employees. The authors mention some
+  consistent 20 year decline, but don't present the evidence of that.}.
+
+\subsubsection{Recommended Interventions to Reduce Turnover and Turnover
+Intention}\label{recommended-interventions-to-reduce-turnover-and-turnover-intention}
+
+The literature reviewed here is mostly concerned with turnover intention
+for government employees. To summarize the findings and recommended
+interventions of Pitts, Marvel, and Fernandez
+(\citeproc{ref-pitts2011}{2011}), workplace satisfaction plays largest
+role in predicting intention to leave an agency among government
+employees. Advancement opportunities and age also plays a significant
+role for agency turnover intention. The most important factors
+predicting whether an employee intends to leave federal government are
+age, whether an employee is non-White, and job satisfaction.
+
+These authors suggested a couple of interventions to decrease turnover
+for government agencies. First, offer advancement opportunities along
+with professional development programs in hopes that it will motivate
+new and younger employees to say at their agency instead of move between
+government agencies. Second, relax performance-based workplace culture
+(merit-based pay/advancement, incentives) for new and younger employees
+as such performance-based cultural work environment predicts
+intra-agency turnover intention among this group
+(\citeproc{ref-pitts2011}{Pitts, Marvel, and Fernandez 2011}).
+
+As stated previously, Bertelli (\citeproc{ref-bertelli2007}{2007}) finds
+that ``functional preferences'' (i.e., a latent factor indicated by two
+component measurements of job involvement and intrinsic motivation) and
+solidarity preferences (e.g., ``This is a friendly place to work.'')
+decrease the likelihood that agency bureaucrats will leave their
+government jobs (\citeproc{ref-bertelli2007}{2007, 253}). Bertelli does
+not recommend interventions outright, there may be distinct strategies
+implied depending on whether the target workers in question are
+supervisors or non-supervisors. However, since the perception of a
+friendly work environment reduces the likelihood of turnover intention
+among non-supervisor employees, it is unclear how or what interventions
+could be enacted to make the workplace appear friendly, generally
+speaking. Although performance-based incentives are weakly significant
+in predicting whether supervisors retain their jobs, such incentives
+imposed upon non-supervisor employees may increase turnover intention.
+However, bear in mind that turnover intention may not reflect actual
+turnover rates (\citeproc{ref-tett1993}{Tett and Meyer 1993}).
+
+\section{Discussion and Conclusion}\label{discussion-and-conclusion}
+
+Based on the review of the cited literature related to turnover
+intention for government employees, the findings suggest that government
+employees are generally more likely to stay for obvious reasons such as
+financial security and retirement potential. It seems more apparent that
+simply getting a federal government job matters more than which agency
+one settles with, and the longer one stays working in government then
+the less likely they are to leave. For instance, one finding suggests
+that a workplace environment with a ``performance culture'' (i.e., a
+work environment that incorporates merit-based pay and advancement
+incentives) \emph{increases} turnover intention but only inter-agency
+turnover, i.e., those who plan to leave their agency to take another job
+within the federal government. Absent here is consideration as to
+whether government work in general is perceived to be more attractive
+compared to work outside of the federal government for most current
+government employees. If it is, then the reasons for wanting to leave
+are unlikely to be entirely related to income and benefits. That is to
+say, there is likely a substantive difference between those who work for
+federal government agencies and those who don't.
+
+This references back to the earlier literature on psychological
+empowerment, which emphasizes a focus on the individual differences
+between workers in terms of the meaning, impact, competence, and
+autonomy they derive from the work they do. This literature draws from
+organizational psychologically and recommends interventions related to
+re-framing the workers interpretation of workplace outcomes and proposes
+the increased use of self-empowerment programs
+(\citeproc{ref-thomas1990}{Thomas and Velthouse 1990}), and generally
+recommends setting goals that are both challenging and well understood
+(i.e., specific) (\citeproc{ref-taylor2013}{Taylor 2013}). Although the
+empowerment literature makes it clear that work satisfaction and
+positive perceptions of workplace leadership either increase or are
+increased by psychological empowerment, there is no clear way to
+intervene and adjust the perceptions of the individual worker. In that
+respect, it appears that the early recommendations by Ashforth
+(\citeproc{ref-ashforth1989}{1989}) may be the most practical and
+sensible overall, ``\ldots provide realistic job previews, specific and
+challenging goals, prompt and balanced feedback, contingent
+reinforcement, and appropriate role models\ldots{}'', and remove
+obstacles which impede personal control
+(\citeproc{ref-ashforth1989}{1989, 234}). In addition, delegating more
+influence to lower level employees in ways that make their input
+significant to workplace strategies and decision-making may also
+increase some demonstrably important component factors of empowerment
+such as competence, impact, and self-determination (i.e., autonomy).
+
+In contrast, the turnover literature reviewed here focuses primarily on
+the organizational structure and workplace environment intervention.
+Although workers who feel like their work is important and gain feelings
+of accomplishment from it are far easier to retain, these attitudes
+become more significant to those who are in supervisor roles--i.e.,
+those who are arguably already well settled into a job or career. The
+workplace environment and its overarching structural arrangement is most
+important to reduce turnover among the young and the restless
+(\citeproc{ref-bertelli2007}{Bertelli 2007}). Quality of pay, benefits,
+opportunities for advancement, and overall financial security are
+organizational factors that are significant to consider if the goal is
+to reduce turnover intention (\citeproc{ref-pitts2011}{Pitts, Marvel,
+and Fernandez 2011}), and possibly actual turnover rates as well.
+Although recruiters and hiring managers might love to hear a potential
+hire genuinely respond to the question ``Why do you want to work here?''
+with ``To increase my sense of psychological empowerment'', the real
+motivation for many potential and current employees may still be those
+basic instrumental factors.
+
+A major aspect underlying the literature reviewed here is organizational
+contextual factors versus individual differences. Thomas and Velthouse
+(\citeproc{ref-thomas1990}{1990}) contended that empowerment refers to
+the motivational content of a nontraditional form of management (a new
+paradigm of motivation, as they say) in which management establishes
+controls to foster an emphasis or internalized commitment to the task
+\emph{itself}. Workers are ``pulled'' toward doing the tasks rather than
+``pushed'' towards it because the tasks are made to be meaningful;
+workers identify with the task; and there is expressive value in doing
+the task. To put another way, figuring out ways to have workers want to
+do the tasks rather than simply making them do the tasks. Authors of the
+empowerment literature say that prior research professes the idea that
+external variables such as organizational structure, managerial
+strategies, and types of information all work as interventions to
+produce increased feelings of empowerment (i.e., self-efficacy) in work.
+In other words, the structural context of the organized work environment
+induces greater empowerment within the worker, and thus enhances their
+motivation to initiate, persist, and better perform. The empowerment
+authors view this as lacking as it doesn't take into account how the
+perspective of the subject (i.e., subjective) influences the cognitive
+variables thought to determine feelings of empowerment. Stated
+otherwise, prior research doesn't take into account the influence of
+individual differences (\citeproc{ref-thomas1990}{Thomas and Velthouse
+1990}).
+
+Yet it appears as though that when organizational factors are relatively
+stable and insignificant--mainly for those workers who are in
+comfortable and secure supervisory positions--then turnover intent and
+actual turnover rates among them are likely to be more strongly
+associated with individual differences such as the components of
+psychological empowerment. Those who are relatively more secure and in
+roles in which they not only feel, but actually are in fact, impactful
+and competent, are seemingly more likely to appraise their work
+conditions in terms of how satisfying it is to them, how meaningful it
+is, and how intrinsically motivated they are to continue doing such
+work. In essence, when certain needs are sufficiently met, then other
+factors take on more significance. This may explain why federal
+employees are more inclined to change agencies but do not quit
+government work outright (\citeproc{ref-bertelli2007}{Bertelli 2007}).
+In contrast, psychological empowerment and other such factors are muted
+\emph{unless} the individual worker is in fact legitimately
+\emph{intrinsically motivated} to do that work for the sake of doing the
+work \emph{itself}. Otherwise, it should be presumed that most workers
+retain jobs motivated by external factors related to basic instrumental
+incentives. It may be the case that workers seek out particular jobs or
+types of work based on more \emph{internalized and integrated} extrinsic
+motivations, which are the closest approximations to intrinsic
+motivation along the extrinsic to intrinsic motivational spectrum
+(\citeproc{ref-ryan2000}{Ryan and Deci 2000},
+\citeproc{ref-ryan2017}{2017}). That is to say, the initial choice of
+what work one wishes to get into is likely more powerful than palliative
+interventions such as self-empowerment programs.
+
+\newpage
+
+\section{Appendix: The Public Service Motivation Construct and
+Scale}\label{appendix-the-public-service-motivation-construct-and-scale}
+
+The following is a brief overview of the Public Service Motivation scale
+and construct as developed by Perry (\citeproc{ref-perry1996}{1996}).
+Perry defines Public Service Motivation (PSM), ``as an individual's
+predisposition to respond to motives grounded primarily or uniquely in
+public institutions'' (\citeproc{ref-perry1996}{1996, 6}). An
+interesting aspect of the PSM construct and scale is that it is
+predicated on a particular understanding of motivation rooted in
+evolutionary psychology, and is also found elsewhere in social
+psychology literature (For review, see
+\citeproc{ref-higgins2021}{Higgins and Nakkawita 2021, 88}). Here and in
+other related work, motives are driven by needs. In particular, certain
+``drive theories'' of motivation suggest that humans recognize something
+as a `need' when its deprivation threatens our survival, our growth, or
+our ultimate life satisfaction and well-being. The motivation to fulfill
+unmet `needs' may guide our behavior, impact on our thoughts, explain
+our selective attention and memory (\citeproc{ref-gardner2000}{Gardner,
+Pickett, and Brewer 2000}; \citeproc{ref-hull1943}{Hull 1943};
+\citeproc{ref-mcleod2022}{Mcleod 2022}). As it relates to PSM, Perry
+(\citeproc{ref-perry1996}{1996}) recognized three analytically distinct
+motivational categories: rational, norm-based, and affective.
+
+\begin{quote}
+``Rational motives involve actions grounded in individual utility
+maximization. Norm-based motives refer to actions generated by efforts
+to conform to norms. Affective motives refer to those triggers of
+behavior that are grounded in emotional responses to various social
+contexts.'' (\citeproc{ref-perry1996}{Perry 1996, 6})
+\end{quote}
+
+The PSM scale development was based on conceptual dimensions which were
+categorized into the motivational categories. The final PSM scale was
+confirmed as having four component dimensions: attraction to public
+policy making, commitment to the public interest, compassion, and
+self-sacrifice. However, the initial analysis of the finalized PSM scale
+demonstrated no distinct difference in model fit between a three and
+four dimensional PSM model. The public interest and self-sacrifice
+component dimensions were highly correlated, and so a comparison between
+the three and four-dimensional model was done. The four dimensional
+model showed a slighter higher \(𝛘^2\) statistic, thus Perry
+(\citeproc{ref-perry1996}{1996}) opted to retain the self-sacrifice
+dimension to maintain the four dimensional model of the PSM scale
+because, ``it has had a historical connection to how we think about
+public service that is explicitly preserved by retaining the
+dimension.'' (\citeproc{ref-perry1996}{Perry 1996, 20}). However, it is
+recommended by Perry that further refinements to the PSM construct and
+scale be undertaken by future research.
+
+The four component dimensions of the Public Service Motivation scale are
+described below;
+
+\begin{description}
+\item[Attraction to public policy making (rational motive)]
+Refers to a rational motive in which the opportunity to participation in
+the formation of public policy draws individuals to public service
+\item[Commitment to the public interest (norm-based)]
+An altruistic desire to serve the public interest
+\item[Compassion (aka ``patriotism of benevolence'', affective)]
+An affective state that combines the love of regime values and the love
+of others which drives people to exemplify ``a patriotism of
+benevolence''{[}\^{}22{]}
+\item[Self-sacrifice (unclear motive)]
+Refers to the willingness to substitute service to others for tangible
+personal rewards. In other words, the willingness of public servants to
+forego financial rewards for the intangible rewards received from
+serving the public.
+\end{description}
+
+After refinements were made to the initial scale, the resulting Public
+Service Motivation Scale was finalized to include 24-items measuring
+four component dimensions. The PSM measurement items are measured with
+Likert type response options. The items are listed in the table below
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1015}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2386}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.6548}}@{}}
+\caption{Public Service Motivation Scale Item Wording
+(\citeproc{ref-perry1996}{Perry 1996})}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Motive type
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Component Dimension
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Item Wording
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Motive type
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Component Dimension
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Item Wording
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Rational Motive & Public Policy Making &
+\begin{minipage}[t]{\linewidth}\raggedright
+\begin{itemize}
+\tightlist
+\item
+  PSM 11 Politics is a dirty word. (Reversed)
+\item
+  PSM 27 The give and take of public policy making doesn't appeal to me.
+  (Reversed)
+\item
+  PSM 31 I don't care much for politicians. (Reversed)
+\end{itemize}
+\end{minipage} \\
+Norm-based motive & Public Interest &
+\begin{minipage}[t]{\linewidth}\raggedright
+\begin{itemize}
+\tightlist
+\item
+  PSM 16 It is hard for me to get intensely interested in what is going
+  on in my community. (Reversed)
+\item
+  PSM 23 I unselfishly contribute to my community.
+\item
+  PSM 30 Meaningful public service is very important to me.
+\item
+  PSM 34 I would prefer seeing public officials do what is best for the
+  whole community even if it harmed my interests.
+\item
+  PSM 39 I consider public service my civic duty.
+\end{itemize}
+\end{minipage} \\
+Affective motive & Compassion (aka ``patriotism of benevolence'') &
+\begin{minipage}[t]{\linewidth}\raggedright
+\begin{itemize}
+\tightlist
+\item
+  PSM 2 I am rarely moved by the plight of the underprivileged.
+  (Reversed)
+\item
+  PSM 3 Most social programs are too vital to do without.
+\item
+  PSM 4 It is difficult for me to contain my feelings when I see people
+  in distress.
+\item
+  PSM 8 To me, patriotism includes seeing to the welfare of others.
+\item
+  PSM 10 I seldom think about the welfare of people whom I don't know
+  personally. (Reversed)
+\item
+  PSM 13 I am often reminded by daily events about how dependent we are
+  on one another.
+\item
+  PSM 24 I have little compassion for people in need who are unwilling
+  to take the first step to help themselves. (Reversed)
+\item
+  PSM 40 There are few public programs that I wholeheartedly support.
+  (Reversed)
+\end{itemize}
+\end{minipage} \\
+Unclear & Self-sacrifice & \begin{minipage}[t]{\linewidth}\raggedright
+\begin{itemize}
+\item
+  PSM 1 Making a difference in society means more to me than personal
+  achievements.
+\item
+  PSM 5 I believe in putting duty before self.
+\item
+  PSM 6 Doing well financially is definitely more important to me than
+  doing good deeds. (Reversed)
+\item
+  PSM 9 Much of what I do is for a cause bigger than myself.
+\item
+  PSM 12 Serving citizens would give me a good feeling even if no one
+  paid me for it.
+\item
+  PSM 17 I feel people should give back to society more than they get
+  from it.
+\item
+  PSM 19 I am one of those rare people who would risk personal loss to
+  help someone else.
+\item
+  PSM 26 I am prepared to make enormous sacrifices for the good of
+  society.
+\end{itemize}
+\end{minipage} \\
+\end{longtable}
+
+\newpage
+
+\subsection*{References}\label{references}
+\addcontentsline{toc}{subsection}{References}
 
 \phantomsection\label{refs}
-\begin{CSLReferences}{1}{0}
-\vspace{1em}
+\begin{CSLReferences}{1}{1}
+\bibitem[\citeproctext]{ref-ashforth1989}
+Ashforth, Blake E. 1989. {``The Experience of Powerlessness in
+Organizations.''} \emph{Organizational Behavior and Human Decision
+Processes} 43(2): 207--42.
+doi:\href{https://doi.org/10.1016/0749-5978(89)90051-4}{10.1016/0749-5978(89)90051-4}.
 
-\bibitem[\citeproctext]{ref-marrero2019}
-Marrero, J., García, A., Berrocoso, M., Llinares, Á., Rodríguez-Losada,
-A., \& Ortiz, R. (2019). Strategies for the development of volcanic
-hazard maps in monogenetic volcanic fields: The example of {La} {Palma}
-({Canary} {Islands}). \emph{Journal of Applied Volcanology}, \emph{8}.
-\url{https://doi.org/10.1186/s13617-019-0085-5}
+\bibitem[\citeproctext]{ref-bertelli2007}
+Bertelli, Anthony M. 2007. {``Determinants of {Bureaucratic Turnover
+Intention}: {Evidence} from the {Department} of the {Treasury}.''}
+\emph{Journal of Public Administration Research and Theory: J-PART}
+17(2): 235--58. \url{https://www.jstor.org/stable/4139743} (February 27,
+2024).
+
+\bibitem[\citeproctext]{ref-dahl1961}
+Dahl, Robert A. 1961. \emph{Who {Governs}?: {Democracy} and {Power} in
+an {American City}}. Yale University Press.
+
+\bibitem[\citeproctext]{ref-dahl2015}
+Dahl, Robert A., and Ian Shapiro. 2015. \emph{On Democracy}. Second
+edition. New Haven: Yale University Press.
+doi:\href{https://doi.org/10.12987/9780300233322}{10.12987/9780300233322}.
+
+\bibitem[\citeproctext]{ref-deci2012}
+Deci, Edward L., and Richard M. Ryan. 2012. {``Self-Determination
+Theory.''} In \emph{Handbook of Theories of Social Psychology, {Vol}.
+1}, Thousand Oaks, CA: Sage Publications Ltd, 416--36.
+doi:\href{https://doi.org/10.4135/9781446249215.n21}{10.4135/9781446249215.n21}.
+
+\bibitem[\citeproctext]{ref-gardner2000}
+Gardner, Wendi L., Cynthia L. Pickett, and Marilynn B. Brewer. 2000.
+{``Social Exclusion and Selective Memory: How the Need to Belong
+Influences Memory for Social Events.''} \emph{Personality and Social
+Psychology Bulletin} 26(4): 486--96.
+doi:\href{https://doi.org/10.1177/0146167200266007}{10.1177/0146167200266007}.
+
+\bibitem[\citeproctext]{ref-hackman1974}
+Hackman, J. Richard, and Greg R. Oldham. 1974. \emph{The {Job Diagnostic
+Survey}: {An Instrument} for the {Diagnosis} of {Jobs} and the
+{Evaluation} of {Job Redesign Projects}}. Yale University. Technical
+Report. \url{https://eric.ed.gov/?id=ED099580} (March 28, 2024).
+
+\bibitem[\citeproctext]{ref-hackman1975}
+Hackman, J. Richard, and Greg R. Oldham. 1975. {``Development of the
+{Job Diagnostic Survey}.''} \emph{Journal of Applied Psychology} 60(2):
+159--70. doi:\href{https://doi.org/10.1037/h0076546}{10.1037/h0076546}.
+
+\bibitem[\citeproctext]{ref-higgins2021}
+Higgins, E Tory, and Emily Nakkawita. 2021. {``Motives {Working
+Together}: {Value}, {Truth}, and {Control} in {Goal Selection} and
+{Pursuit}.''} In \emph{Social Psychology : Handbook of Basic
+Principles}, eds. Paul A. M. van Lange, Arie W. Kruglanski, and E Tory
+Higgins. New York: The Guilford Press, 85--105.
+\url{https://search.ebscohost.com/login.aspx?direct=true&scope=site&db=nlebk&db=nlabk&AN=2645023}.
+
+\bibitem[\citeproctext]{ref-hull1943}
+Hull, C. L. 1943. \emph{Principles of Behavior: An Introduction to
+Behavior Theory}. Oxford, England: Appleton-Century.
+
+\bibitem[\citeproctext]{ref-kruglanski2017}
+Kruglanski, Arie W., Ayelet Fishbach, Kaitlin Woolley, Jocelyn Belanger,
+Marina Chernikova, Erica Molinario, and Antonio Pierro. 2017. {``A
+{Structural Model} of {Intrinsic Motivation}: {On} the {Psychology} of
+{Means-Ends Fusion}.''}
+doi:\href{https://doi.org/10.31234/osf.io/kdct8}{10.31234/osf.io/kdct8}.
+
+\bibitem[\citeproctext]{ref-kruglanski2022}
+Kruglanski, Arie W., Erica Molinario, Katarzyna Jasko, David Webber, N.
+Pontus Leander, and Antonio Pierro. 2022. {``Significance-{Quest
+Theory}.''} \emph{Perspectives on Psychological Science} 17(4):
+1050--71.
+doi:\href{https://doi.org/10.1177/17456916211034825}{10.1177/17456916211034825}.
+
+\bibitem[\citeproctext]{ref-liden2000}
+Liden, Robert C., Sandy J. Wayne, and Raymond T. Sparrowe. 2000. {``An
+Examination of the Mediating Role of Psychological Empowerment on the
+Relations Between the Job, Interpersonal Relationships, and Work
+Outcomes.''} \emph{Journal of Applied Psychology} 85(3): 407--16.
+doi:\href{https://doi.org/10.1037/0021-9010.85.3.407}{10.1037/0021-9010.85.3.407}.
+
+\bibitem[\citeproctext]{ref-mcleod2022}
+Mcleod, Saul. 2022. {``Maslow's Hierarchy of Needs.''}
+\url{https://www.simplypsychology.org/maslow.html}.
+
+\bibitem[\citeproctext]{ref-perry1996}
+Perry, James L. 1996. {``Measuring {Public Service Motivation}: {An
+Assessment} of {Construct Reliability} and {Validity}.''} \emph{Journal
+of Public Administration Research and Theory: J-PART} 6(1): 5--22.
+\url{https://www.jstor.org/stable/1181620} (February 27, 2024).
+
+\bibitem[\citeproctext]{ref-pietryka2022}
+Pietryka, Matthew T., and Randall C. MacIntosh. 2022. {``{ANES Scales
+Often Do Not Measure What You Think They Measure}.''} \emph{The Journal
+of Politics} 84(2): 1074--90.
+doi:\href{https://doi.org/10.1086/715251}{10.1086/715251}.
+
+\bibitem[\citeproctext]{ref-pitts2011}
+Pitts, David, John Marvel, and Sergio Fernandez. 2011. {``So {Hard} to
+{Say Goodbye}? {Turnover Intention} Among {U}.{S}. {Federal
+Employees}.''} \emph{Public Administration Review} 71(5): 751--60.
+\url{https://www.jstor.org/stable/23017442} (February 27, 2024).
+
+\bibitem[\citeproctext]{ref-ryan2000}
+Ryan, Richard M., and Edward L. Deci. 2000. {``Intrinsic and {Extrinsic
+Motivations}: {Classic Definitions} and {New Directions}.''}
+\emph{Contemporary Educational Psychology} 25(1): 54--67.
+doi:\href{https://doi.org/10.1006/ceps.1999.1020}{10.1006/ceps.1999.1020}.
+
+\bibitem[\citeproctext]{ref-ryan2017}
+Ryan, Richard M., and Edward L. Deci. 2017. \emph{Self-Determination
+Theory : Basic Psychological Needs in Motivation, Development, and
+Wellness}. New York: Guilford Press.
+\url{http://books.google.com/books?vid=isbn9781462528769}.
+
+\bibitem[\citeproctext]{ref-ryan2021}
+Ryan, Richard M., and Edward L. Deci. 2021. {``Human {Autonomy} in
+{Social Psychology}: {A Self-Determination Theory Perspective}.''} In
+\emph{Social Psychology : Handbook of Basic Principles}, eds. Paul A. M.
+van Lange and Arie W. Kruglanski. New York: The Guilford Press.
+
+\bibitem[\citeproctext]{ref-shapira-lishchinsky2014}
+Shapira-Lishchinsky, Orly, and Sigalit Tsemach. 2014. {``Psychological
+{Empowerment} as a {Mediator Between Teachers}' {Perceptions} of
+{Authentic Leadership} and {Their Withdrawal} and {Citizenship
+Behaviors}.''} \emph{Educational Administration Quarterly} 50(4):
+675--712.
+doi:\href{https://doi.org/10.1177/0013161X13513898}{10.1177/0013161X13513898}.
+
+\bibitem[\citeproctext]{ref-skinner1965}
+Skinner, Burrhus Frederic. 1965. \emph{Science and Human Behavior}.
+{Simon and Schuster}.
+
+\bibitem[\citeproctext]{ref-spreitzer1995}
+Spreitzer, Gretchen M. 1995. {``Psychological {Empowerment} in the
+{Workplace}: {Dimensions}, {Measurement}, and {Validation}.''} \emph{The
+Academy of Management Journal} 38(5): 1442--65.
+doi:\href{https://doi.org/10.2307/256865}{10.2307/256865}.
+
+\bibitem[\citeproctext]{ref-taylor2013}
+Taylor, Jeannette. 2013. {``Goal {Setting} in the {Australian Public
+Service}: {Effects} on {Psychological Empowerment} and {Organizational
+Citizenship Behavior}.''} \emph{Public Administration Review} 73(3):
+453--64. \url{https://www.jstor.org/stable/42002950} (February 27,
+2024).
+
+\bibitem[\citeproctext]{ref-tett1993}
+Tett, Robert P., and John P. Meyer. 1993. {``{JOB SATISFACTION},
+{ORGANIZATIONAL COMMITMENT}, {TURNOVER INTENTION}, {AND TURNOVER}: {PATH
+ANALYSES BASED ON META-ANALYTIC FINDINGS}.''} \emph{Personnel
+Psychology} 46(2): 259--93.
+\url{https://search.ebscohost.com/login.aspx?direct=true&db=eue&AN=9401104761&site=ehost-live}.
+
+\bibitem[\citeproctext]{ref-thomas1990}
+Thomas, Kenneth W., and Betty A. Velthouse. 1990. {``Cognitive
+{Elements} of {Empowerment}: {An} "{Interpretive}" {Model} of {Intrinsic
+Task Motivation}.''} \emph{The Academy of Management Review} 15(4):
+666--81. doi:\href{https://doi.org/10.2307/258687}{10.2307/258687}.
 
 \end{CSLReferences}
 
