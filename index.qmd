@@ -38,10 +38,6 @@ key-points:
 date: last-modified
 bibliography: empowerment.bib
 csl: american-political-science-association.csl
-mainfont: TeX Gyre Pagella
-mainfontoptions:
-  - Numbers=Lowercase
-  - Numbers=Proportional    
 link-citations: true
 tbl-cap-location: top
 reference-location: document
