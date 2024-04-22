@@ -1,4 +1,3 @@
-## A Quarto Manuscript Template
+## Repository for the Empowerment and Turnover Literature Review
 
-This is a template repo for generating a manuscript from Quarto that accompanies the tutorial at: [Quarto Manuscripts: RStudio](https://quarto.org/docs/manuscripts/authoring/rstudio.html)
-
+A repo for the academic review of the empowerment and turnover literature conducted by the Center for Democracy and Civic Engagement
