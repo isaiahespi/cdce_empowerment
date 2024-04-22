@@ -51,6 +51,9 @@ number-sections: false
 
 
 
+
+
+
 # Abstract
 
 An increase in turnover among the election administration workforce has been observed and become recently salient. Election administration work (e.g., poll workers) is certainly difficult. The impetus of the following review was to discover what lessons, supports, or specific interventions could be derived from selected literature to potentially help reduce turnover, turnover intention, and boost morale for election workers in particular. A selection of academic literature on psychological empowerment and turnover are reviewed for that purpose.
