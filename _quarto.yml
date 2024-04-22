@@ -21,10 +21,7 @@ format:
   report-pdf:
     keep-md: true
     keep-tex: true
-    mainfont: TeX Gyre Pagella
-    mainfontoptions:
-      - Numbers=Lowercase
-      - Numbers=Proportional 
+    mainfont: Palatino Linotype
     
 
 
