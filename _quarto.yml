@@ -11,6 +11,7 @@ format:
     toc: true
     toc-location: left
     smooth-scroll: true
+    mainfont: Palatino Linotype
     embed-resources: true
     footnotes-hover: false
     # Use a CSL to style (https://www.zotero.org/styles/)
@@ -20,7 +21,7 @@ format:
   report-pdf:
     keep-md: true
     keep-tex: true
-    
+    mainfont: Palatino Linotype
 
 
 

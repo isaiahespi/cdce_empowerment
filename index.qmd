@@ -39,7 +39,6 @@ date: last-modified
 bibliography: empowerment.bib
 csl: american-political-science-association.csl
 link-citations: true
-mainfont: Palatino Linotype
 tbl-cap-location: top
 reference-location: document
 filters: 
