@@ -5,6 +5,7 @@ execute:
   freeze: auto
 
 bibliography: empowerment.bib
+mainfont: Palatino Linotype
 
 format:
   html:
