@@ -11,7 +11,7 @@ format:
     toc: true
     toc-location: left
     smooth-scroll: true
-    embed-resources: true
+    embed-resources: false
     footnotes-hover: false
     mainfont: Palatino Linotype
     # Use a CSL to style (https://www.zotero.org/styles/)
