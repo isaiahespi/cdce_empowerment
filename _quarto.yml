@@ -13,7 +13,6 @@ format:
     smooth-scroll: true
     embed-resources: false
     footnotes-hover: false
-    mainfont: Palatino Linotype
     # Use a CSL to style (https://www.zotero.org/styles/)
     csl: https://www.zotero.org/styles/american-political-science-review
   docx: default
